@@ -27,7 +27,7 @@ require("./routes/billingRoutes")(app);
 
 if (process.env.NODE_ENV === "production") {
   //look for defined asset
-  app.use(expres.static("client/build"));
+  app.use(express.static("client/build"));
 
   //otherwise serve up client index
   const path = require("path");
