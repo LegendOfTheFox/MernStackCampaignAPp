@@ -1,5 +1,5 @@
 const _ = require("lodash");
-const Path = require("path-parser");
+const Path = require("path-parser").default;
 const { URL } = require("url");
 const mongoose = require("mongoose");
 const requireLogin = require("../middlewares/requireLogin");
@@ -11,6 +11,7 @@ const Survey = mongoose.model("surveys");
 
 module.exports = app => {
   app.get("/api/surveys", requireLogin, async (req, res) => {
+    console.log("Testing");
     const surveys = await Survey.find({ _user: req.user.id }).select({
       recipients: false
     });
@@ -24,6 +25,8 @@ module.exports = app => {
 
   app.post("/api/surveys/webhooks", (req, res) => {
     const p = new Path("/api/surveys/:surveyId/:choice");
+
+    console.log("IS THIS HAPPENING??");
 
     _.chain(req.body)
       .map(({ email, url }) => {
