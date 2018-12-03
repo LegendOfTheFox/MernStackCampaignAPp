@@ -34,12 +34,13 @@ class Header extends Component {
     console.log(this.props);
     return (
       <nav>
-        <div className="nav-wrapper">
+        <div className="nav-wrapper light-blue darken-3">
           <Link
             to={this.props.auth ? "/surveys" : "/"}
             className="left brand-logo"
           >
-            Survey App
+            <i class="material-icons">cloud</i>
+            SurveyCloud
           </Link>
           <ul className="right">{this.renderContent()}</ul>
         </div>
